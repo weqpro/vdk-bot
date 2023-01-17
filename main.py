@@ -12,10 +12,17 @@ def process_commands(message):
     func(message, bot)
 
 
+@bot.callback_query_handler(func=lambda call: call.text in DefaultValues.commands.keys())
+def process_callback(message, callback):
+    func = getattr(functions, DefaultValues.commands[callback.data])
+    func(bot)
+
+
 @bot.message_handler(func=lambda m: True)
 def non_process(message):
     bot.reply_to(message, "Введіть команду /start")
     log.log_con(message)
+
 
 
 bot.polling(none_stop=True)

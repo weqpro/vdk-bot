@@ -4,7 +4,15 @@ from dataclasses import dataclass
 @dataclass
 class DefaultValues:
     commands = {
-        "/start": "send_welcome"
+        "/podaty": "submit",
+        "/help": "help",
+        "/sub": "info",
+        "/start": "start",
+        "/send_info": "send_info",
+        "/info": "information",
+        "/emergency": "emergency"
     }
 
-    img: list
+    users = list()
+
+    admins = [282871773]
